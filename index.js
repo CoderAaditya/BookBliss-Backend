@@ -23,8 +23,8 @@ app.use(cors({
 })); 
 app.use(express.json()); // parse JSON request bodies
 
-// Connect to MongoDB using MONGO_URI from environment
-mongoose.connect(process.env.MONGO_URI)
+// Connect to MongoDB using MONGO_URI_LIVE from environment to connect to live database else for localhost use MONGO_URI
+mongoose.connect(process.env.MONGO_URI_LIVE)
   .then(() => console.log('MongoDB connected'))
   .catch(err => console.error('MongoDB connection error:', err));
 
