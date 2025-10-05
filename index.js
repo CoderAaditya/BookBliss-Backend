@@ -16,7 +16,11 @@ const PORT = process.env.PORT || 5000;
 // Basic security, logging, and parsing middleware
 app.use(helmet()); // sets various HTTP headers for security
 app.use(morgan('combined')); // HTTP request logging
-app.use(cors()); // enable CORS for all origins (adjust in production as needed)
+app.use(cors({
+  origin: '*', 
+  methods: '*',
+  allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With', 'Accept']
+})); 
 app.use(express.json()); // parse JSON request bodies
 
 // Connect to MongoDB using MONGO_URI from environment
